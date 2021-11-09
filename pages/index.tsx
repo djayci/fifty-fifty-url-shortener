@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   const submit = async (fullUrl: string) => {
     const url = new URL('/api/squash', window.location.href);
     url.search = new URLSearchParams({ url: fullUrl }).toString();
-    const res = await fetch(url);
+    const res = await fetch(url.toString());
     const data = await res.json();
     setNano(data.nano);
   }
