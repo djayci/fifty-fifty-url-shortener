@@ -9,22 +9,13 @@ class Mongo {
         this.mongoose = mongoose;
     }
 
-    private async connect(): Promise<Mongoose | boolean> {
+    private async connect(): Promise<Mongoose | void> {
         if (this.instance) return this.instance;
-
-        try {
-            const instance = await mongoose.connect(
-                'mongodb+srv://djayci:!Peq697th@cluster0.itwol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-            );
-            console.log('connected to db...');
-            return instance;
-        } catch (err) {
-            console.log(err);
-            return false;
-        }
+        const { DB_HOST, DB_USER, DB_PASS } = process.env;
+        return await mongoose.connect(
+            `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}`
+        );
     }
 }
 
 export const DB = new Mongo().mongoose;
-
-//mongodb+srv://djayci:!Peq697th@cluster0.itwol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
