@@ -1,6 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
+import { ErrorHandler } from '../decorators/error-handler'
 
-class Mongo {
+class MongoDB {
     private instance;
     public mongoose;
 
@@ -9,8 +10,10 @@ class Mongo {
         this.mongoose = mongoose;
     }
 
-    private async connect(): Promise<Mongoose | void> {
+    @ErrorHandler
+    private async connect(): Promise<Mongoose> {
         if (this.instance) return this.instance;
+
         const { DB_HOST, DB_USER, DB_PASS } = process.env;
         return await mongoose.connect(
             `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}`
@@ -18,4 +21,4 @@ class Mongo {
     }
 }
 
-export const DB = new Mongo().mongoose;
+export const DB = new MongoDB().mongoose;

@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import { Troller } from '../src/services/lucky-draw/lucky-draw';
 import { Shortener } from '../src/services/shortener/shortener';
 
 function Nano() {
@@ -8,11 +9,19 @@ function Nano() {
 export default Nano
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    const URL = await Shortener.find({ nano: params?.nano });
+
+    let url: string;
+    if (Troller.amIlucky()) {
+        const found = await Shortener.find({ nano: params?.nano });
+        url = found[0].full
+    } else {
+        url = 'https://www.nyan.cat/index.php?cat=technyancolor';
+    }
+
     return {
         redirect: {
             permanent: false,
-            destination: URL[0].full,
+            destination: url
         }
     }
 }
