@@ -45,9 +45,9 @@ const Home: NextPage = () => {
             value='submit'
             onClick={() => submit(url)} />
         </form>
-        {/* 
 
-        <div className='text-center bg-green-500 w-2/4 m-auto'><a href={window.location.href + nano}>{window.location.href + nano}</a></div> */}
+
+        {nano && <div className='text-center bg-green-500 w-2/4 m-auto'><a href={window.location.href + nano}>{window.location.href + nano}</a></div>}
 
 
       </div>
