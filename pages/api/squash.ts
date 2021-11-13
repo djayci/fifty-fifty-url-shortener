@@ -6,11 +6,10 @@ type Data = {
   nano: string
 }
 
-export default async function handler({ query: { url } }: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function handler({ query: { url }, headers: { host } }: NextApiRequest, res: NextApiResponse<Data>) {
   try {
-    const id: string = nanoid(4);
-    const nano: string = `${process.env.VERCEL_URL}/${id}`;
-    const urlModel = new UrlModel({ url, nano, path: id })
+    const nano: string = nanoid(4);
+    const urlModel = new UrlModel({ url, nano })
     await urlModel.save();
 
     res.status(200).json({ nano })

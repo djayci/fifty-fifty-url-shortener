@@ -5,7 +5,8 @@ import { Http } from '../src/services/http/http';
 import { Input } from '../src/components/input/input';
 
 interface squash {
-  nano: string;
+  nano: string,
+  path: string
 }
 
 const Home: NextPage = () => {
@@ -18,11 +19,10 @@ const Home: NextPage = () => {
   };
 
   const submit = async (url: string) => {
-    if (nano) return (window.location.href = nano);
+    if (nano) return (window.location.pathname = nano);
 
     const data: squash = await Http.get('/api/squash', { url });
     setNano(data.nano);
-    setUrl(data.nano);
   };
 
   return (
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
           />
           <Input
             type="button"
-            value={`${nano ? nano : 'submit'}`}
+            value={`${nano ? window.location.href + nano : 'submit'}`}
             customClasses={`${url ? 'bg-green-500' : 'bg-red-500'} -ml-2 ${nano ? 'w-full' : 'w-1/5'} cursor-pointer rounded-tl-none rounded-bl-none text-white font-medium `}
             onClickHandler={() => url && submit(url)}
           />

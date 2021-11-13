@@ -12,10 +12,6 @@ const urlSchema = new Schema<Url>(
             type: String,
             required: true
         },
-        path: {
-            type: String,
-            required: true
-        },
         createdAt: Date
     },
     { timestamps: true }
