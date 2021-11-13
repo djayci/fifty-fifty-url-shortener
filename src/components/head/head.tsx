@@ -5,7 +5,7 @@ export const CustomHead: FC = () => {
     return (
         <Head>
             <title>50/50 url shortener ✨</title>
-            < meta charSet="UTF-8" />
+            <meta charSet="UTF-8" />
             <meta key="title" content="50/50" property="og:title" />
             {/* <link href="/favicon.ico" rel="shortcut icon" />
             <link rel="preconnect" href="https://fonts.googleapis.com"></link>

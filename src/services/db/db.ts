@@ -1,7 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 import { ErrorHandler } from '../decorators/error-handler'
 
-class MongoDB {
+class DB {
     private instance;
     public mongoose;
 
@@ -21,4 +21,4 @@ class MongoDB {
     }
 }
 
-export const DB = new MongoDB().mongoose;
+export const MongoDB = new DB().mongoose;
