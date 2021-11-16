@@ -8,5 +8,7 @@
     "less.validate": false,
     "scss.validate": false,
     "files.autoSaveDelay": 500,
+    "typescript.suggest.completeFunctionCalls": true,
+    "javascript.suggest.completeFunctionCalls": true,
   }
   

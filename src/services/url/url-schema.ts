@@ -1,4 +1,4 @@
-import { MongoDB } from '../db/db';
+import { MongoDB } from '../mongo-db/mongo-db';
 import { Url } from './url-interface';
 
 const Schema = MongoDB.Schema;

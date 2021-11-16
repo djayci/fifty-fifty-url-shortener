@@ -41,7 +41,7 @@ const Home: NextPage = () => {
           <Input
             type="button"
             value={`${nano ? window.location.href + nano : 'submit'}`}
-            customClasses={`${url ? 'bg-green-500' : 'bg-red-500'} -ml-2 ${nano ? 'w-full' : 'w-1/5'} cursor-pointer rounded-tl-none rounded-bl-none text-white font-medium `}
+            customClasses={`${url ? 'bg-green-500 cursor-pointer' : 'bg-red-500'} ${nano ? 'w-full' : 'w-1/5'} -ml-2 rounded-tl-none rounded-bl-none text-white font-medium `}
             onClickHandler={() => url && submit(url)}
           />
         </form>
