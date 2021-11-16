@@ -40,7 +40,7 @@ const Home: NextPage = () => {
           />
           <Input
             type="button"
-            value={`${nano ? window.location.host.replace('www.', '') + nano : 'submit'}`}
+            value={`${nano ? `${window.location.host.replace('www.', '')}/${nano}` : 'submit'}`}
             customClasses={`${url ? 'bg-green-500 cursor-pointer' : 'bg-red-500'} ${nano ? 'w-full' : 'w-1/5'} -ml-2 rounded-tl-none rounded-bl-none text-white font-medium `}
             onClickHandler={() => url && submit(url)}
           />
