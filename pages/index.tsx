@@ -4,7 +4,7 @@ import { Hero } from '../src/components/hero/hero';
 import { Http } from '../src/services/http/http';
 import { Input } from '../src/components/input/input';
 
-interface squash {
+interface Squash {
   nano: string,
   path: string
 }
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   const submit = async (url: string) => {
     if (nano) return (window.location.pathname = nano);
 
-    const data: squash = await Http.get('/api/squash', { url });
+    const data: Squash = await Http.get('/api/squash', { url });
     setNano(data.nano);
   };
 
